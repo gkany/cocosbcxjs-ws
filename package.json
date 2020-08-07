@@ -24,17 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cocosbcx/cocosbcxjs-ws.git"
+    "url": "git+https://github.com/gkany/cocosbcxjs-ws.git"
   },
-  "author": "cocosbcx UI Worker <ui-dev@cocosbcx.org>",
-  "contributors": [
-    "Sigve Kvalsvik <cocosbcxblocks@gmail.com> (https://github.com/svk31)",
-    "James Calfee <james@jcalfee.info> (https://github.com/jcalfee/)",
-    "scientistnik"
-  ],
+  "author": "gkany",
+  "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cocosbcx/cocosbcxjs-ws/issues"
+    "url": "https://github.com/gkany/cocosbcxjs-ws/issues"
   },
   "engines": {
     "node": ">= 10.0.0"
