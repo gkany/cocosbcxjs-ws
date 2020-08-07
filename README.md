@@ -1,18 +1,18 @@
-# Bitshares websocket interface (bitsharesjs-ws)
+# cocosbcx websocket interface (cocosbcxjs-ws)
 
-Pure JavaScript Bitshares websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the Bitshares blockchain via public apis or local nodes.
+Pure JavaScript cocosbcx websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the cocosbcx blockchain via public apis or local nodes.
 
 Credit for the original implementation goes to [jcalfeee](https://github.com/jcalfee).
 
-[![npm version](https://img.shields.io/npm/v/bitsharesjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/bitsharesjs-ws)
-[![npm downloads](https://img.shields.io/npm/dm/bitsharesjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/bitsharesjs-ws)
+[![npm version](https://img.shields.io/npm/v/cocosbcxjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/cocosbcxjs-ws)
+[![npm downloads](https://img.shields.io/npm/dm/cocosbcxjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/cocosbcxjs-ws)
 
 
 ## Setup
 
 This library can be obtained through npm:
 ```
-npm install bitsharesjs-ws
+npm install cocosbcxjs-ws
 ```
 
 ## Usage
@@ -22,16 +22,16 @@ Several examples are available in the /examples folder, and the tests in /test a
 Browser bundles are provided in /build/, for testing purposes you can access this from rawgit:
 
 ```
-<script type="text/javascript" src="https://cdn.rawgit.com/bitshares/bitsharesjs-ws/build/bitsharesjs-ws.js" />
+<script type="text/javascript" src="https://cdn.rawgit.com/cocosbcx/cocosbcxjs-ws/build/cocosbcxjs-ws.js" />
 ```
 
-A variable bitshares_ws will be available in window.
+A variable cocosbcx_ws will be available in window.
 
 For use in a webpack/browserify context, see the example below for how to open a websocket connection to the Openledger API and subscribe to any object updates:
 
 ```
-var {Apis} = require("bitsharesjs-ws");
-Apis.instance("wss://bitshares.openledger.info/ws", true).init_promise.then((res) => {
+var {Apis} = require("cocosbcxjs-ws");
+Apis.instance("wss://api.cocosbcx.net", true).init_promise.then((res) => {
     console.log("connected to:", res[0].network);
     Apis.db.set_subscribe_callback( updateListener, true )
 });
@@ -43,21 +43,21 @@ function updateListener(object) {
 The `set_subscribe_callback` callback (updateListener) will be called whenever an object on the blockchain changes or is removed. This is very powerful and can be used to listen to updates for specific accounts, assets or most anything else, as all state changes happen through object updates. Be aware though that you will receive quite a lot of data this way.
 
 # Witness node endpoints
-This is a non-exhaustive list of endpoints available from the witness_node executable, which provides the API server of Bitshares.
+This is a non-exhaustive list of endpoints available from the witness_node executable, which provides the API server of cocosbcx.
 
 ## Public API 
-Please see all available methods in the [official documentation](http://dev.bitshares.works/en/master/api/blockchain_api.html).
+Please see all available methods in the [official documentation](http://dev.cocosbcx.works/en/master/api/blockchain_api.html).
 
 ### Database API
 
-To access the [Database API](http://dev.bitshares.works/en/master/api/blockchain_api/database.html), you can use the `Apis.db` object.
+To access the [Database API](http://dev.cocosbcx.works/en/master/api/blockchain_api/database.html), you can use the `Apis.db` object.
 
 __Usage example__
 `Apis.db.get_objects(["1.3.0", "2.0.0", "2.1.0"])`
 
 ### History API
 
-To access the [Account History API](http://dev.bitshares.works/en/master/api/blockchain_api/history.html), you can use the `Apis.history` object.
+To access the [Account History API](http://dev.cocosbcx.works/en/master/api/blockchain_api/history.html), you can use the `Apis.history` object.
 
 __Usage example__
 `Apis.history.get_account_history("1.2.849826", "1.11.0", 10, "1.11.0")`

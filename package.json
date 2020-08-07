@@ -1,7 +1,7 @@
 {
-  "name": "bitsharesjs-ws",
+  "name": "cocosbcxjs-ws",
   "version": "3.1.1",
-  "description": "Pure JavaScript BitShares websocket interface for node.js and browsers.",
+  "description": "Pure JavaScript cocosbcx websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
   },
@@ -18,23 +18,23 @@
     "build": "babel src -d lib",
     "postbuild": "npm run browserify",
     "prepublish": "npm run build",
-    "browserify": "cross-env NODE_ENV=production browserify lib/index.js --standalone bitshares_ws -o build/bitsharesjs-ws.js -d",
-    "postbrowserify": "cross-env NODE_ENV=production minify build/bitsharesjs-ws.js --mangle --outFile build/bitsharesjs-ws.min.js",
+    "browserify": "cross-env NODE_ENV=production browserify lib/index.js --standalone cocosbcx_ws -o build/cocosbcxjs-ws.js -d",
+    "postbrowserify": "cross-env NODE_ENV=production minify build/cocosbcxjs-ws.js --mangle --outFile build/cocosbcxjs-ws.min.js",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bitshares/bitsharesjs-ws.git"
+    "url": "git+https://github.com/cocosbcx/cocosbcxjs-ws.git"
   },
-  "author": "BitShares UI Worker <ui-dev@bitshares.org>",
+  "author": "cocosbcx UI Worker <ui-dev@cocosbcx.org>",
   "contributors": [
-    "Sigve Kvalsvik <bitsharesblocks@gmail.com> (https://github.com/svk31)",
+    "Sigve Kvalsvik <cocosbcxblocks@gmail.com> (https://github.com/svk31)",
     "James Calfee <james@jcalfee.info> (https://github.com/jcalfee/)",
     "scientistnik"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bitshares/bitsharesjs-ws/issues"
+    "url": "https://github.com/cocosbcx/cocosbcxjs-ws/issues"
   },
   "engines": {
     "node": ">= 10.0.0"

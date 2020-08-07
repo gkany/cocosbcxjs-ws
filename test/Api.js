@@ -2,7 +2,7 @@ import assert from "assert";
 import {Apis} from "../lib";
 
 var coreAsset;
-var default_api = "wss://eu.nodes.bitshares.ws";
+var default_api = "wss://api.cocosbcx.net";
 
 describe("Api", () => {
 
@@ -268,8 +268,8 @@ describe("Api", () => {
 
         it ("Get market data", function() {
             return new Promise( function(resolve, reject) {
-                if (coreAsset !== "BTS") {
-                    reject(new Error("This test will only work when connected to a BTS api"));
+                if (coreAsset !== "COCOS") {
+                    reject(new Error("This test will only work when connected to a COCOS api"));
                 }
                 Apis.instance().history_api().exec("get_fill_order_history", ["1.3.121", "1.3.0", 10])
                 .then(function(history) {
@@ -284,8 +284,8 @@ describe("Api", () => {
 
         it ("Get market data (short)", function() {
             return new Promise( function(resolve, reject) {
-                if (coreAsset !== "BTS") {
-                    reject(new Error("This test will only work when connected to a BTS api"));
+                if (coreAsset !== "COCOS") {
+                    reject(new Error("This test will only work when connected to a COCOS api"));
                 }
                 Apis.history.get_fill_order_history("1.3.121", "1.3.0", 10)
                 .then(function(history) {

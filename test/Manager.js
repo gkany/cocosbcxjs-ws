@@ -1,7 +1,7 @@
 import assert from "assert";
 import { Manager, Apis } from "../lib";
 
-var defaultUrl = "wss://eu.nodes.bitshares.ws";
+var defaultUrl = "wss://api.cocosbcx.net";
 
 var faultyNodeList = [
     {url: "wss://bitsqsdqsdhares.openledger.info/ws", location: "Nuremberg, Germany"},
@@ -9,9 +9,9 @@ var faultyNodeList = [
     {url: "wss://bitshaazdzares.openledger.info/ws", location: "Nuremberg, Germany"},
     {url: "wss://bit.btzadazdsabc.org/ws", location: "Hong Kong"},
     {url: "ws://127.0.0.1:8091", location: "Hangzhou, China"},
-    {url: "wss://bitshares.openledger.info/ws", location: "Nuremberg, Germany"},
+    {url: "wss://api.cocosbcx.net", location: "Nuremberg, Germany"},
     {url: "wss://secure.freedomledger.com/ws", location: "Toronto, Canada"},
-    {url: "wss://node.testnet.bitshares.eu", location: "Public Testnet Server (Frankfurt, Germany)"}
+    {url: "wss://node.testnet.cocosbcx.eu", location: "Public Testnet Server (Frankfurt, Germany)"}
 ];
 
 var noWorkingNodes = [
@@ -22,17 +22,17 @@ var noWorkingNodes = [
     {url: "ws://127.23230.0.1:8091", location: "Hangzhou, China"},
     {url: "wss://bitshasdares.dacplay.org:8089/ws", location:  "Hangzhou, China"},
     {url: "wss://secuasdre.freedomledger.com/ws", location: "Toronto, Canada"},
-    {url: "wss://testnet.bitshares.eu/wqsdsqs", location: "Public Testnet Server (Frankfurt, Germany)"}
+    {url: "wss://testnet.cocosbcx.eu/wqsdsqs", location: "Public Testnet Server (Frankfurt, Germany)"}
 ];
 
 var goodNodeList = [
-    {url: "wss://bitshares.openledger.info/ws", location: "Nuremberg, Germany"},
+    {url: "wss://api.cocosbcx.net", location: "Nuremberg, Germany"},
     {url: "wss://bit.btsabc.org/ws", location: "Hong Kong"},
     {url: "wss://bts.transwiser.com/ws", location: "Hangzhou, China"},
-    {url: "wss://bitshares.dacplay.org:8089/ws", location:  "Hangzhou, China"},
+    {url: "wss://cocosbcx.dacplay.org:8089/ws", location:  "Hangzhou, China"},
     {url: "wss://openledger.hk/ws", location: "Hong Kong"},
     {url: "wss://secure.freedomledger.com/ws", location: "Toronto, Canada"},
-    {url: "wss://node.testnet.bitshares.eu", location: "Public Testnet Server (Frankfurt, Germany)"}
+    {url: "wss://node.testnet.cocosbcx.eu", location: "Public Testnet Server (Frankfurt, Germany)"}
 ];
 
 var fullNodeList = [
@@ -42,13 +42,13 @@ var fullNodeList = [
     },
     {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
     {
-        url: "wss://eu.nodes.bitshares.ws",
-        location: "Central Europe - BitShares Infrastructure Program"
+        url: "wss://api.cocosbcx.net",
+        location: "Central Europe - cocosbcx Infrastructure Program"
     },
     // Testnet
     {
-        url: "wss://testnet.nodes.bitshares.ws",
-        location: "TESTNET - BitShares Infrastructure Program"
+        url: "wss://testnet.nodes.cocosbcx.ws",
+        location: "TESTNET - cocosbcx Infrastructure Program"
     }
 ]
 
@@ -72,7 +72,7 @@ describe("Connection Manager", function() {
     });
 
     it("Instantiates with orders api", function() {
-        let man = new Manager({url: "wss://eu.nodes.bitshares.ws", urls: [], optionalApis: {enableOrders: true}});
+        let man = new Manager({url: "wss://api.cocosbcx.net", urls: [], optionalApis: {enableOrders: true}});
         return new Promise( function(resolve, reject) {
             man.connect().then(() => {
                 assert(!!Apis.instance().orders_api());
@@ -95,7 +95,7 @@ describe("Connection Manager", function() {
         let man = new Manager({url: "ws://127.0.0.1:8092", urls: faultyNodeList.map(a => a.url)});
         return new Promise( function(resolve, reject) {
             man.connectWithFallback().then(function() {
-                assert.equal(man.url, "wss://bitshares.openledger.info/ws");
+                assert.equal(man.url, "wss://api.cocosbcx.net");
                 resolve();
             })
             .catch(reject)
@@ -131,10 +131,10 @@ describe("Connection Manager", function() {
     it("Can automatically fallback when closed", function() {
         this.timeout(20000);
         let man = new Manager({
-            url: "wss://eu.nodes.bitshares.ws",
+            url: "wss://api.cocosbcx.net",
             urls: ([
-                "wss://eu.nodes.bitshares.ws",
-                "wss://bitshares.openledger.info/ws"
+                "wss://api.cocosbcx.net",
+                "wss://api.cocosbcx.net"
             ]),
             autoFallback: true
         });
@@ -161,9 +161,9 @@ describe("Connection Manager", function() {
         return new Promise( function(resolve, reject) {
 
         let man = new Manager({
-            url: "wss://eu.nodes.bitshares.ws",
+            url: "wss://api.cocosbcx.net",
             urls: ([
-                "wss://eu.nodes.bitshares.ws",
+                "wss://api.cocosbcx.net",
                 "wss://eu.openledger.info/ws"
             ]),
             closeCb: function() {
@@ -189,7 +189,7 @@ describe("Connection Manager", function() {
 
     it("Checks connections for url and urls", function() {
         this.timeout(20000);
-        let man = new Manager({url: "wss://eu.nodes.bitshares.ws", urls: ["wss://bts.open.icowallet.net/ws"]});
+        let man = new Manager({url: "wss://api.cocosbcx.net", urls: ["wss://bts.open.icowallet.net/ws"]});
         return new Promise( function(resolve, reject) {
             man.checkConnections().then((latencies => {
                 assert.equal(Object.keys(latencies).length, 2);
